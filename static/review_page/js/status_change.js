@@ -6,7 +6,7 @@ async function status_success(file_system_id) {
         .then(res => {
             console.log(res);
         }).then(() =>
-            alert("審核遞交成功！")
+            alert("資料 " + file_system_id + " 審核遞交成功！")
         ).then(() => location.reload());
 };
 
@@ -18,9 +18,8 @@ async function status_failed(file_system_id) {
         .then(res => {
             console.log(res);
         }).then(() =>
-            alert("審核遞交成功！")
+            alert("資料 " + file_system_id + " 審核遞交成功！")
         ).then(() => location.reload());
 };
-
 
 
