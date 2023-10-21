@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Review Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Document Infomation</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>
+										<h3 class="subtitle">用戶</h3>
+									</th>
+									<th>
+										<h3 class="subtitle">檔案名稱</h3>
+									</th>
+									<th>
+										<h3 class="subtitle">教授</h3>
+									</th>
+									<th>
+										<h3 class="subtitle">科目</h3>
+									</th>
+									<th>
+										<h3 class="subtitle">類型</h3>
+									</th>
+									<th>
+										<h3 class="subtitle">文件狀態</h3>
+									</th>
+									<th>
+										<h3 class="subtitle">審核狀態</h3>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for row in data %}
+								<tr>
+									{%for d in row%}
+									<td>{{ row.user_id }}</td>
+									<td>{{ row.file_name }}</td>
+									<td>{{ row.question_professor }}</td>
+									<td>{{ row.question_course }}</td>
+									<td>{{ row.question_exam_type }}</td>
+									<td>NULL</td>
+									<td>
+										<a href="#" class="btn btn-success" style="margin-bottom:10px">
+											<p class="success_status" style="padding-top: 10px;">Success</p>
+										</a>
+										<a href="#" class="btn btn-failed">
+											<p class="failed_status" style="padding-top: 10px;">Failed</p>
+										</a>
+									</td>
+									{%endof%}
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/data.js"></script>
+	<script>
+		fetch()
+
+	</script>
+</body>
+
+</html>
