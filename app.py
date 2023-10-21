@@ -29,5 +29,25 @@ def get_data():
     return jsonify({"data": evaluation_list}), 200
 
 
+@app.route(f'/change_status_to_success/<file_system_id>', methods=['GET'])
+def change_status_to_success(file_system_id):
+    print(file_system_id)
+    file_instance = FileSystem.query.filter(FileSystem.id == file_system_id).first()
+    file_instance.censor_status = 2
+    db.session.add(file_instance)
+    db.session.commit()
+    return jsonify({"data": f"success in {file_system_id}"}), 200
+
+
+@app.route(f'/change_status_to_failed/<file_system_id>', methods=['GET'])
+def change_status_to_failed(file_system_id):
+    # print(file_system_id)
+    file_instance = FileSystem.query.filter(FileSystem.id == file_system_id).first()
+    file_instance.censor_status = 3
+    db.session.add(file_instance)
+    db.session.commit()
+    return jsonify({"data": f"success in {file_system_id}"}), 200
+
+
 if __name__ == '__main__':
     app.run()

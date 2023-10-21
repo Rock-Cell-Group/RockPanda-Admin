@@ -58,6 +58,7 @@
                         <tbody>
                         {% for row in data %}
                             <tr>
+                                <td hidden="hidden">{{ row.id }}</td>
                                 <td>{{ row.user_id }}</td>
                                 <td>{{ row.file_name }}</td>
                                 <td>{{ row.question_professor }}</td>
@@ -65,12 +66,12 @@
                                 <td>{{ row.question_exam_type }}</td>
                                 <td>{{ row.censor_status}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-success clickable_scuccess_button" style="margin-bottom:10px">
-                                        <p class="success_status" style="padding-top: 10px;">Success</p>
-                                    </a>
-                                    <a href="#" class="btn btn-failed clickable_failed_button">
+                                    <button href="#" class="btn btn-success clickable_scuccess_button" style="margin-bottom:10px" onclick="status_success({{ row.id }})">
+                                        <p class="success_status" style="padding-top: 10px;" >Success</p>
+                                    </button>
+                                    <button href="#" class="btn btn-failed clickable_failed_button" onclick="status_failed({{ row.id }})">
                                         <p class="failed_status" style="padding-top: 10px;">Failed</p>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                         {% endfor %}
