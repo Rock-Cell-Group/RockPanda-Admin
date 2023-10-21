@@ -64,7 +64,18 @@
                                 <td>{{ row.question_professor }}</td>
                                 <td>{{ row.question_course }}</td>
                                 <td>{{ row.question_exam_type }}</td>
-                                <td>{{ row.censor_status }}</td>
+                                {# # 0:未審核 1:審核中 2:審核通過 3:審核不通過 #}
+                                <td>
+                                    {% if row.censor_status == 0 %}
+                                        <span class="status status--denied">未審核</span>
+                                    {% elif row.censor_status == 1 %}
+                                        <span class="status status--pending">審核中</span>
+                                    {% elif row.censor_status == 2 %}
+                                        <span class="status status--approved">審核通過</span>
+                                    {% elif row.censor_status == 3 %}
+                                        <span class="status status--denied">審核不通過</span>
+                                    {% endif %}
+                                </td>
                                 <td>
                                     <form action="/download/{{ row.id }}" method="get">
                                         <button class="btn btn-warning " style="margin-bottom:10px; width: 10em"

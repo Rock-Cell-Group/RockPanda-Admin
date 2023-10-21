@@ -3,9 +3,11 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template
+from sqlalchemy import desc, asc
+
 from config import get_config_by_flask_env
 from models.models import FileSystem
-from models import db
+from models import db, models
 from flask import Flask, request, send_file
 from azure.storage.blob import BlobServiceClient
 
@@ -58,14 +60,13 @@ def hello_world():  # put application's code here
 @app.route('/review')
 def review():
     #  get review_page_index.html
-    data_list = FileSystem.query.filter(FileSystem.censor_status == 0).all()
-
+    data_list = FileSystem.query.filter().order_by(asc(models.FileSystem.censor_status)).all()
     return render_template("review_page_index.html", data=data_list)
 
 
 @app.route('/get-data', methods=['GET'])
 def get_data():
-    evaluation_list = FileSystem.query.filter(FileSystem.censor_status == 0).all()
+    evaluation_list = FileSystem.query.filter().order_by(asc(models.FileSystem.censor_status)).all()
     # turn the evaluation_list into a list of dictionaries
     evaluation_list = [evaluation.to_dict() for evaluation in evaluation_list]
     return jsonify({"data": evaluation_list}), 200
