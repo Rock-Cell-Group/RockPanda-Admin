@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-	<title>Review Page</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Review Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hsuweihung/review_css/main/css/style.css">-->
-    <link rel="stylesheet" href="{{url_for('static', filename='review_page/css/style.css')}}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='review_page/css/style.css') }}">
     <script src="{{ url_for('static', filename='review_page/js/status_change.js') }}"></script>
     <script src="{{ url_for('static', filename='review_page/js/jquery.min.js') }}"></script>
 
@@ -64,13 +64,22 @@
                                 <td>{{ row.question_professor }}</td>
                                 <td>{{ row.question_course }}</td>
                                 <td>{{ row.question_exam_type }}</td>
-                                <td>{{ row.censor_status}}</td>
+                                <td>{{ row.censor_status }}</td>
                                 <td>
-                                    <button href="#" class="btn btn-success clickable_scuccess_button" style="margin-bottom:10px" onclick="status_success({{ row.id }})">
-                                        <p class="success_status" style="padding-top: 10px;" >Success</p>
+                                    <form action="/download/{{ row.id }}" method="get">
+                                        <button class="btn btn-warning " style="margin-bottom:10px; width: 10em"
+                                                type="submit">Check
+                                        </button>
+                                    </form>
+                                    <button href="#"
+                                            class="btn btn-primary "
+                                            style="margin-bottom:10px; width: 10em"
+                                            onclick="status_success({{ row.id }})">Success
                                     </button>
-                                    <button href="#" class="btn btn-failed clickable_failed_button" onclick="status_failed({{ row.id }})">
-                                        <p class="failed_status" style="padding-top: 10px;">Failed</p>
+                                    <button href="#"
+                                            class="btn btn-danger "
+                                            style="margin-bottom:10px; width: 10em"
+                                            onclick="status_failed({{ row.id }})">Failed
                                     </button>
                                 </td>
                             </tr>
