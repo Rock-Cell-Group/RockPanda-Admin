@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from config import get_config_by_flask_env
 from models.models import FileSystem
 from models import db
@@ -11,6 +11,14 @@ db.init_app(app)
 @app.route('/')
 def hello_world():  # put application's code here
     return 'Hello World!'
+
+
+@app.route('/review')
+def review():
+    #  get review_page_index.html
+    data_list = FileSystem.query.filter(FileSystem.censor_status == 0).all()
+
+    return render_template("review_page_index.html", data=data_list)
 
 
 @app.route('/get-data', methods=['GET'])
