@@ -12,7 +12,7 @@
 
     <!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hsuweihung/review_css/main/css/style.css">-->
     <link rel="stylesheet" href="{{url_for('static', filename='review_page/css/style.css')}}" >
-    
+    <script src="{{ url_for('static', filename='review_page/js/status_change.js') }}"></script>
     <script src="{{ url_for('static', filename='review_page/js/jquery.min.js') }}"></script>
 
 </head>
@@ -54,6 +54,7 @@
                             </th>
                         </tr>
                         </thead>
+                        <p id="demo"></p>
                         <tbody>
                         {% for row in data %}
                             <tr>
@@ -62,12 +63,12 @@
                                 <td>{{ row.question_professor }}</td>
                                 <td>{{ row.question_course }}</td>
                                 <td>{{ row.question_exam_type }}</td>
-                                <td>NULL</td>
+                                <td>{{ row.censor_status}}</td>
                                 <td>
-                                    <a href="#" class="btn btn-success" style="margin-bottom:10px">
+                                    <a href="#" class="btn btn-success clickable_scuccess_button" style="margin-bottom:10px">
                                         <p class="success_status" style="padding-top: 10px;">Success</p>
                                     </a>
-                                    <a href="#" class="btn btn-failed">
+                                    <a href="#" class="btn btn-failed clickable_failed_button">
                                         <p class="failed_status" style="padding-top: 10px;">Failed</p>
                                     </a>
                                 </td>
