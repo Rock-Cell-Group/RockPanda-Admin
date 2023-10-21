@@ -3,7 +3,7 @@ from config import get_config_by_flask_env
 from models.models import FileSystem
 from models import db
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path="/static")
 app.config.from_object(get_config_by_flask_env())
 db.init_app(app)
 

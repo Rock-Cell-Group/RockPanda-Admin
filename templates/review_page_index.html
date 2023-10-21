@@ -10,7 +10,10 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hsuweihung/review_css/main/css/style.css">
+    <!--<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/hsuweihung/review_css/main/css/style.css">-->
+    <link rel="stylesheet" href="{{url_for('static', filename='review_page/css/style.css')}}" >
+    
+    <script src="{{ url_for('static', filename='review_page/js/jquery.min.js') }}"></script>
 
 </head>
 
@@ -78,5 +81,10 @@
     </div>
 </section>
 </body>
+<script src="../static/review_page/js/jquery.min.js"></script>
+<script src="../static/review_page/js/popper.js"></script>
+<script src="../static/review_page/js/bootstrap.min.js"></script>
+<script src="../static/review_page/js/main.js"></script>
+<script src="../static/review_page/js/data.js"></script>
 
 </html>
