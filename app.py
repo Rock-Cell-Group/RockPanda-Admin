@@ -1,6 +1,7 @@
 import io
 import os
 
+import uvicorn as uvicorn
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template
 from sqlalchemy import desc, asc
@@ -94,3 +95,5 @@ def change_status_to_failed(file_system_id):
 
 if __name__ == '__main__':
     app.run()
+    # uvicorn.run(app, host="0.0.0.0", port=8000)
+
