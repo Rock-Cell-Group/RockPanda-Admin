@@ -94,6 +94,6 @@ def change_status_to_failed(file_system_id):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port=5000)
     # uvicorn.run(app, host="0.0.0.0", port=8000)
 
